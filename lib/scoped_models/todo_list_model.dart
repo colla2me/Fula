@@ -76,7 +76,7 @@ class TodoListModel extends Model {
   void updateTodo(Todo todo) {
     assert(todo !=null);
     assert(todo.id !=null);
-    var oldTodo = _todos.firstWhere((it) => it.id ==todo.id);
+    var oldTodo = _todos.firstWhere((it) => it.id == todo.id);
     var replaceIndex =_todos.indexOf(oldTodo);
     _todos.replaceRange(replaceIndex, replaceIndex + 1, [todo]);
     notifyListeners();

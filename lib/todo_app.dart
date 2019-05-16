@@ -6,6 +6,7 @@ import 'core/routes.dart';
 import 'scoped_models/todo_list_model.dart';
 import 'screens/home_screen.dart';
 import 'screens/store_screen.dart';
+import 'screens/add_edit_screen.dart';
 
 class TodoApp extends StatelessWidget {
 
@@ -21,8 +22,9 @@ class TodoApp extends StatelessWidget {
       title: "TodoApp",
       theme: AppSampleTheme.theme,
       routes: {
-        AppSampleRoutes.home: (context) => MyHomePage(title: 'Home Page'),
-        AppSampleRoutes.store: (context) => StorePage(),
+        AppSampleRoutes.home: (context) => MyHomePage(),
+        AppSampleRoutes.store: (context) => StoreScreen(),
+        AppSampleRoutes.addTodo: (context) => AddEditScreen()
       },
     );
 

@@ -5,7 +5,7 @@ import '../scoped_models/todo_list_model.dart';
 class FilterButton extends StatelessWidget {
   final bool isActive;
 
-  FilterButton({Key key, this.isActive}) : super(key: key);
+  FilterButton({Key key, this.isActive}) : super(key: key ?? Key('FliterButton'));
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class FilterButton extends StatelessWidget {
 
     return [
       PopupMenuItem<VisibilityFilter>(
-        value: VisibilityFilter.active,
+        value: VisibilityFilter.all,
         child: Text(
           'show all',
           style: model.activeFilter == VisibilityFilter.all
@@ -59,7 +59,7 @@ class FilterButton extends StatelessWidget {
       ),
 
       PopupMenuItem<VisibilityFilter>(
-        value: VisibilityFilter.active,
+        value: VisibilityFilter.complete,
         child: Text(
           'show completed',
           style: model.activeFilter == VisibilityFilter.complete

@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import '../models/product.dart';
 import '../utils/cart_icons.dart';
 
-class StorePage extends StatelessWidget {
+class StoreScreen extends StatelessWidget {
+
+  final bool appBarHidden;
+
+  StoreScreen({this.appBarHidden = false});
 
   List<Product> addItems() {
     final list =List<Product>();
@@ -107,7 +111,7 @@ class StorePage extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: ListView.builder(
         shrinkWrap: true,
-        physics: ClampingScrollPhysics(),
+        physics: BouncingScrollPhysics(), //ClampingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: items.length,
         itemBuilder: (context, index) {
@@ -173,7 +177,7 @@ class StorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: appBarHidden ? null : AppBar(
         title: Text(
           'Store Page',
           style: TextStyle(
