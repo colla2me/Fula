@@ -28,7 +28,7 @@ class TodoListModel extends Model {
 
   TodoListModel({@required this.repository, VisibilityFilter activeFilter}) : this._activeFilter = activeFilter ?? VisibilityFilter.all;
 
-  static TodoListModel of(BuildContext context) => ScopedModel.of<TodoListModel>(context);
+  static TodoListModel of(BuildContext context) => ScopedModel.of<TodoListModel>(context, rebuildOnChange: true);
 
   @override
   void addListener(listener) {

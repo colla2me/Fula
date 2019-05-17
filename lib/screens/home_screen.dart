@@ -4,9 +4,10 @@ import '../widgets/extra_actions_button.dart';
 import '../widgets/filter_button.dart';
 import '../widgets/todo_list.dart';
 import '../screens/store_screen.dart';
+import '../screens/stats_screen.dart';
 
 enum AppTab {
-  todos, store
+  todos, store, stats
 }
 
 class MyHomePage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
   AppTab _activeTab = AppTab.todos;
 
   void _onPressButton() {
-    Navigator.pushNamed(context, AppSampleRoutes.addTodo);
+    Navigator.pushNamed(context, AppSampleRoutes.chart);
   }
 
   Widget _buildBody() {
@@ -30,6 +31,8 @@ class _MyHomePageState extends State<MyHomePage> {
         return TodoList();
       case AppTab.store:
         return StoreScreen(appBarHidden: true);
+      case AppTab.stats:
+        return StatsScreen();
       default: return null;
     }
   }
@@ -40,6 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
         return Icon(Icons.list);
       case AppTab.store:
         return Icon(Icons.store);
+      case AppTab.stats:
+        return Icon(Icons.star);
       default: return null;
     }
   }
@@ -50,6 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
         return Text('Todos');
       case AppTab.store:
         return Text('Store');
+      case AppTab.stats:
+        return Text('Star');
       default: return null;
     }
   }

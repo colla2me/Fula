@@ -7,6 +7,9 @@ import 'scoped_models/todo_list_model.dart';
 import 'screens/home_screen.dart';
 import 'screens/store_screen.dart';
 import 'screens/add_edit_screen.dart';
+import 'demo/first_screen.dart';
+import 'screens/charts_screen.dart';
+// import 'tab_bar_navigation.dart';
 
 class TodoApp extends StatelessWidget {
 
@@ -18,13 +21,15 @@ class TodoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var app = MaterialApp(
+    final app = MaterialApp(
       title: "TodoApp",
       theme: AppSampleTheme.theme,
       routes: {
         AppSampleRoutes.home: (context) => MyHomePage(),
         AppSampleRoutes.store: (context) => StoreScreen(),
-        AppSampleRoutes.addTodo: (context) => AddEditScreen()
+        AppSampleRoutes.addTodo: (context) => AddEditScreen(),
+        AppSampleRoutes.first: (context) => FirstScreen(),
+        AppSampleRoutes.chart: (context) => ChartScreen()
       },
     );
 
