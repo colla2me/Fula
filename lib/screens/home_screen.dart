@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../core/routes.dart';
 import '../widgets/extra_actions_button.dart';
 import '../widgets/filter_button.dart';
 import '../widgets/todo_list.dart';
 import '../screens/store_screen.dart';
 import '../screens/stats_screen.dart';
+import '../screens/add_edit_screen.dart';
 
 enum AppTab {
   todos, store, stats
@@ -20,10 +20,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   AppTab _activeTab = AppTab.todos;
-
-  void _onPressButton() {
-    Navigator.pushNamed(context, AppSampleRoutes.chart);
-  }
 
   Widget _buildBody() {
     switch (_activeTab) {
@@ -97,7 +93,15 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: _buildBody(),
       floatingActionButton: FloatingActionButton(
-        onPressed: _onPressButton,
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) {
+                return AddEditScreen();
+              }
+            )
+          );
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
