@@ -18,4 +18,12 @@ class AppSampleTheme {
     );
   }
 
+  static get tubiTheme {
+    return ThemeData(
+      fontFamily: 'Vaud',
+      brightness: Brightness.dark,
+      primaryColor: Color(0xff26262d),
+      backgroundColor: Color(0xff26262d)
+    );
+  }
 }

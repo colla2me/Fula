@@ -12,6 +12,7 @@ import 'screens/expansion_screen.dart';
 import 'screens/sliver_list_screen.dart';
 import 'tab_bar_navigation.dart';
 import 'screens/list_demo_screen.dart';
+import 'tubi_tv/tubi_navigation.dart';
 
 class TodoApp extends StatelessWidget {
 
@@ -24,8 +25,9 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final app = MaterialApp(
-      title: "TodoApp",
-      theme: AppSampleTheme.theme,
+      title: "Flutter",
+      darkTheme: ThemeData.dark(),
+      theme: AppSampleTheme.tubiTheme,
       home: ListDemoScreen(),
       routes: {
         AppSampleRoutes.home: (context) => MyHomePage(),
@@ -34,7 +36,8 @@ class TodoApp extends StatelessWidget {
         AppSampleRoutes.chart: (context) => ChartScreen(),
         AppSampleRoutes.tabbar: (context) => TabBarNavigation(),
         AppSampleRoutes.expansion: (context) => ExpansionListScreen(),
-        AppSampleRoutes.sliver: (context) => SliverScreen()
+        AppSampleRoutes.sliver: (context) => SliverScreen(),
+        AppSampleRoutes.tubi: (context) => TubiNavigation()
       },
     );
 

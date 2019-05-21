@@ -11,7 +11,8 @@ class ListDemoScreen extends StatelessWidget {
     AppSampleRoutes.first,
     AppSampleRoutes.chart,
     AppSampleRoutes.expansion,
-    AppSampleRoutes.sliver
+    AppSampleRoutes.sliver,
+    AppSampleRoutes.tubi
   ];
 
   @override

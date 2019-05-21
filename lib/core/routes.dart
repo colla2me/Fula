@@ -7,4 +7,5 @@ class AppSampleRoutes {
   static final chart = '/chart';
   static final expansion = '/expansion';
   static final sliver = '/sliver';
+  static final tubi = '/tubi';
 }
