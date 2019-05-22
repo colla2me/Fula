@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../page_keep_alive/airplay_screen.dart';
+import 'home/home_page.dart';
 import '../page_keep_alive/email_screen.dart';
 import '../page_keep_alive/home_screen.dart';
 
@@ -81,7 +81,7 @@ class _TubiNavigationState extends State<TubiNavigation> with SingleTickerProvid
       body: PageView(
         controller: _controller,
         children: <Widget>[
-          AirPlayScreen(),
+          HomePage(),
           EmailScreen(),
           HomeScreen()
         ],

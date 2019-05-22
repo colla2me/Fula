@@ -8,7 +8,6 @@ class ListDemoScreen extends StatelessWidget {
     AppSampleRoutes.home,
     AppSampleRoutes.store,
     AppSampleRoutes.tabbar,
-    AppSampleRoutes.first,
     AppSampleRoutes.chart,
     AppSampleRoutes.expansion,
     AppSampleRoutes.sliver,
