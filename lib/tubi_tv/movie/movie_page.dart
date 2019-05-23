@@ -45,15 +45,52 @@ class _MoviePageState extends State<MoviePage> {
   }
 
   Widget _buildMovieBackground(BuildContext context) {
-    return Container(
+    final size =  MediaQuery.of(context).size;
+    return Stack(
+      children: <Widget>[
+        Container(
       // padding: EdgeInsets.only(top: 100),
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.width + 150,
-      child: CachedNetworkImage(
-        imageUrl: movie.backgrounds.first,
-        fit: BoxFit.cover,
-      ),
+          width: size.width,
+          height: size.width,
+          child: CachedNetworkImage(
+            imageUrl: movie.backgrounds.first,
+            fit: BoxFit.cover,
+          )
+        ),
+        Positioned(
+          bottom: 0,
+          left: 0,
+          child: Container(
+            width: size.width,
+            height: size.width,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.center,
+                end: Alignment.bottomCenter,
+                colors: [Colors.transparent, Color(0xff26262d)]
+              )
+            ),
+          ),
+        )
+      ],
     );
+    // return Container(
+    //   // padding: EdgeInsets.only(top: 100),
+    //   width: MediaQuery.of(context).size.width,
+    //   height: MediaQuery.of(context).size.width,
+    //   child: CachedNetworkImage(
+    //     imageUrl: movie.backgrounds.first,
+    //     fit: BoxFit.cover,
+    //   ),
+    //   decoration: BoxDecoration(
+    //     gradient: LinearGradient(
+    //       begin: Alignment.bottomCenter,
+    //       end: Alignment.center,
+    //       stops: [0.5, 1.0],
+    //       colors: [Colors.transparent, Color(0xff26262d)]
+    //     )
+    //   ),
+    // );
   }
 
   Widget _buildMoviePoster() {

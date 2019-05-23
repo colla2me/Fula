@@ -8,6 +8,47 @@ class ChartScreen extends StatefulWidget {
 }
 
 class _ChartScreenState extends State<ChartScreen> {
+
+  Widget _buildPositionedStack() {
+    return Container(
+      margin: EdgeInsets.all(10),
+      height: 200,
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+            top: 20,
+            left: 20,
+            child: Container(
+              width: 100,
+              height: 300,
+              color: Colors.redAccent,
+            ),
+          ),
+
+          Positioned(
+            left: 120,
+            top: 20,
+            child: Container(
+              width: 100,
+              height: 200,
+              color: Colors.greenAccent,
+            ),
+          ),
+
+          Positioned(
+            right: 20,
+            top: 20,
+            child: Container(
+              width: 100,
+              height: 200,
+              color: Colors.blueAccent,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +63,8 @@ class _ChartScreenState extends State<ChartScreen> {
                width: 300,
                height: 300,
                child: _GaugeChart.withRandomData(),
-             )
+             ),
+             _buildPositionedStack()
           ],
         )
       ),
