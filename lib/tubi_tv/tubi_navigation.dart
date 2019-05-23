@@ -49,7 +49,6 @@ class TubiNavigationBar extends StatelessWidget{
   }
 }
 
-
 class TubiNavigation extends StatefulWidget {
   @override
   _TubiNavigationState createState() => _TubiNavigationState();
@@ -58,15 +57,6 @@ class TubiNavigation extends StatefulWidget {
 class _TubiNavigationState extends State<TubiNavigation> with SingleTickerProviderStateMixin {
 
   int _currentIndex = 0;
-  final _controller = PageController(
-    initialPage: 0
-  );
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
 
   // Widget _buildOffstagePage(Widget pageView, int index) {
   //   return Offstage(
@@ -75,11 +65,27 @@ class _TubiNavigationState extends State<TubiNavigation> with SingleTickerProvid
   //   );
   // }
 
+  PageController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = PageController(
+      initialPage: _currentIndex
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        key: PageStorageKey('TubiPageView'),
+        key: PageStorageKey('TubiPageController'),
         controller: _controller,
         physics: NeverScrollableScrollPhysics(),
         children: [

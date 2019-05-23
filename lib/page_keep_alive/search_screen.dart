@@ -10,14 +10,6 @@ class _SearchScreenState extends State<SearchScreen>
   @override
   bool get wantKeepAlive => true;
 
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -30,20 +22,11 @@ class _SearchScreenState extends State<SearchScreen>
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             new Text(
-              'You have pushed the button this many times:',
-            ),
-            new Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+              'Search Screen',
             ),
           ],
         ),
-      ),
-      floatingActionButton: new FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: new Icon(Icons.add),
-      ),
+      )
     );
   }
 }

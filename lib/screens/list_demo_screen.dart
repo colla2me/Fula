@@ -5,13 +5,13 @@ import '../widgets/custom_dialog.dart';
 class ListDemoScreen extends StatelessWidget {
 
   final List<String> _routes = [
-    AppSampleRoutes.home,
     AppSampleRoutes.store,
     AppSampleRoutes.tabbar,
     AppSampleRoutes.chart,
-    AppSampleRoutes.expansion,
     AppSampleRoutes.sliver,
-    AppSampleRoutes.tubi
+    AppSampleRoutes.tubi,
+    AppSampleRoutes.douban,
+    AppSampleRoutes.sliver2
   ];
 
   @override

@@ -5,7 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 class HomeHeader extends StatefulWidget {
   final List<Movie> movies;
 
-  HomeHeader({Key key, this.movies}) : super(key: key);
+  HomeHeader({Key key, this.movies}) : super(key: key ?? Key('tubi_home_header'));
 
   @override
   _HomeHeaderState createState() => _HomeHeaderState();

@@ -23,9 +23,14 @@ class _SliverScreenState extends State<SliverScreen> {
         slivers: <Widget>[
           _buildSliverAppBar(),
           _buildSliverToBoxAdapter(),
-          _buildSliverGrid(context),
+          _buildPresistentHeader(),
+          _buildSliverPadding(context),
+          _buildSliverToBoxAdapter(),
+          _buildPresistentHeader(),
           _buildSliverFixedExtentList(context),
-          _buildSliverFillViewPort()
+          _buildSliverToBoxAdapter(),
+          _buildPresistentHeader(),
+          // _buildSliverFillViewPort()
         ],
       ),
     );
@@ -33,7 +38,7 @@ class _SliverScreenState extends State<SliverScreen> {
 
   Widget _buildSliverAppBar() {
     return SliverAppBar(
-      backgroundColor: Colors.white.withOpacity(0.5),
+      backgroundColor: Colors.pinkAccent.withOpacity(0.8),
       expandedHeight: 200,
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
@@ -65,24 +70,46 @@ class _SliverScreenState extends State<SliverScreen> {
     );
   }
 
-  Widget _buildSliverGridFixed(BuildContext context) {
-    return SliverGrid(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 5,
-        mainAxisSpacing: 6,
-        crossAxisSpacing: 6,
-        // childAspectRatio: 4
+  // Widget _buildSliverGridFixed(BuildContext context) {
+  //   return SliverGrid(
+  //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+  //       crossAxisCount: 5,
+  //       mainAxisSpacing: 6,
+  //       crossAxisSpacing: 6,
+  //       // childAspectRatio: 4
+  //     ),
+  //     delegate: SliverChildBuilderDelegate(
+  //       (BuildContext context, int index) {
+  //         return Container(
+  //           alignment: Alignment.center,
+  //           color: Colors.teal[100 * (index % 10)],
+  //           child: Text('Sliver Grid Item $index'),
+  //         );
+  //       },
+  //       childCount: 10
+  //     ),
+  //   );
+  // }
+
+  Widget _buildPresistentHeader() {
+    return SliverPersistentHeader(
+      delegate: _DefaultSliverPersistentHeader(
+        minHeight: 120,
+        maxHeight: 120,
+        child: Container(
+          child: Center(
+            child: Text('Sliver Persistent Header', style: TextStyle(fontSize: 24)),
+          ),
+          color: Colors.tealAccent,
+        )
       ),
-      delegate: SliverChildBuilderDelegate(
-        (BuildContext context, int index) {
-          return Container(
-            alignment: Alignment.center,
-            color: Colors.teal[100 * (index % 10)],
-            child: Text('Sliver Grid Item $index'),
-          );
-        },
-        childCount: 10
-      ),
+    );
+  }
+
+  Widget _buildSliverPadding(BuildContext context) {
+    return SliverPadding(
+      padding: EdgeInsets.all(12),
+      sliver: _buildSliverGrid(context)
     );
   }
 
@@ -127,7 +154,7 @@ class _SliverScreenState extends State<SliverScreen> {
     return SliverFillViewport(
       delegate: SliverChildListDelegate([
         Container(
-          color: Colors.pinkAccent.withOpacity(0.8),
+          color: Colors.orangeAccent.withOpacity(0.8),
           child: Center(
             child: Text(
               'SliverFillViewPort',
@@ -140,5 +167,35 @@ class _SliverScreenState extends State<SliverScreen> {
         )
       ]),
     );
+  }
+}
+
+class _DefaultSliverPersistentHeader extends SliverPersistentHeaderDelegate {
+  final double maxHeight;
+  final double minHeight;
+  final Widget child;
+
+  _DefaultSliverPersistentHeader({
+    @required this.minHeight,
+    @required this.maxHeight,
+    @required this.child
+  });
+
+  @override
+  double get minExtent => minHeight;
+
+  @override
+  double get maxExtent => maxHeight;
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return SizedBox.expand(child: child);
+  }
+
+  @override
+  bool shouldRebuild(_DefaultSliverPersistentHeader oldDelegate) {
+    return minHeight != oldDelegate.minHeight ||
+          maxHeight != oldDelegate.maxHeight ||
+          child != oldDelegate.child;
   }
 }

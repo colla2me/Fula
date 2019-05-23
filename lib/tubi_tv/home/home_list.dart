@@ -13,7 +13,7 @@ class HomeList extends StatelessWidget {
   HomeList({Key key, this.homeModel})
   : _allMovieList = homeModel.movieListExcludeFeatured() ?? [],
     _featuredMovies = homeModel.getFeaturedMovies() ?? [],
-    super(key:key);
+    super(key:key ?? Key('tubi_home_list'));
 
   Widget _buildSectionTitle(String title) {
     return Container(
