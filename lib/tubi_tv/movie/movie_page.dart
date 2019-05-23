@@ -23,6 +23,12 @@ class _MoviePageState extends State<MoviePage> {
   List<Movie> _movies = [];
 
   @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
   void initState() {
     super.initState();
     _controller = ScrollController();

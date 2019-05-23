@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'page_keep_alive/airplay_screen.dart';
 import 'page_keep_alive/email_screen.dart';
-import 'page_keep_alive/home_screen.dart';
+import 'page_keep_alive/search_screen.dart';
 import 'page_keep_alive/pages_screen.dart';
 
 class TabBarNavigation extends StatefulWidget {
@@ -30,7 +30,7 @@ class _TabBarNavigationState extends State<TabBarNavigation> with SingleTickerPr
         children: <Widget>[
           AirPlayScreen(),
           EmailScreen(),
-          HomeScreen(),
+          SearchScreen(),
           PagesScreen()
         ],
         physics: NeverScrollableScrollPhysics(),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
+class SearchScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _SearchScreenState createState() => _SearchScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
+class _SearchScreenState extends State<SearchScreen>
     with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;

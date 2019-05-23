@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home/home_page.dart';
 import '../page_keep_alive/email_screen.dart';
-import '../page_keep_alive/home_screen.dart';
+import '../page_keep_alive/search_screen.dart';
 
 class TubiNavigationBar extends StatelessWidget{
 
@@ -79,13 +79,14 @@ class _TubiNavigationState extends State<TubiNavigation> with SingleTickerProvid
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+        key: PageStorageKey('TubiPageView'),
         controller: _controller,
-        children: <Widget>[
+        physics: NeverScrollableScrollPhysics(),
+        children: [
           HomePage(),
           EmailScreen(),
-          HomeScreen()
-        ],
-        physics: NeverScrollableScrollPhysics(),
+          SearchScreen()
+        ]
       ),
       bottomNavigationBar: TubiNavigationBar(
         currentTab: _currentIndex,
