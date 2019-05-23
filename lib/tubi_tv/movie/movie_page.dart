@@ -33,7 +33,7 @@ class _MoviePageState extends State<MoviePage> {
     return SliverAppBar(
       // backgroundColor: Color(0xff26262d),
       backgroundColor: Colors.transparent,
-      expandedHeight: 150,
+      // expandedHeight: 150,
       pinned: true,
       title: Text(
         movie.title,
@@ -48,7 +48,7 @@ class _MoviePageState extends State<MoviePage> {
     return Container(
       // padding: EdgeInsets.only(top: 100),
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.width + 150,
       child: CachedNetworkImage(
         imageUrl: movie.backgrounds.first,
         fit: BoxFit.cover,
@@ -56,117 +56,140 @@ class _MoviePageState extends State<MoviePage> {
     );
   }
 
-  Widget _buildSliverToBoxAdapter() {
-    return SliverToBoxAdapter(
-      child: Container(
-        height: 200,
-        // margin: EdgeInsets.only(top: 100),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Container(
-              width: 124,
-              height: 180,
-              margin: EdgeInsets.only(left: 15, bottom: 15),
-              alignment: Alignment.bottomLeft,
-              child: CachedNetworkImage(
-                imageUrl: movie.posterarts.first,
-                fit: BoxFit.fill,
-              ),
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(4),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.white30,
-                    offset: Offset(0, 5),
-                    blurRadius: 10
-                  )
-                ]
-              ),
+  Widget _buildMoviePoster() {
+    return Container(
+      margin: EdgeInsets.only(top: 150),
+      height: 200,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Container(
+            width: 124,
+            height: 180,
+            margin: EdgeInsets.only(left: 15, bottom: 15),
+            alignment: Alignment.bottomLeft,
+            child: CachedNetworkImage(
+              imageUrl: movie.posterarts.first,
+              fit: BoxFit.fill,
             ),
-            Container(
-              width: 150,
-              margin: EdgeInsets.only(left: 10),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    movie.title,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold
-                    )
-                  ),
-                  SizedBox(height: 30),
-                  Text(
-                    '(${movie.year}) · ${movie.duration}\n${movie.tags.join()} ',
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 12
-                    ),
-                  )
-                ],
-              ),
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(4),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.white30,
+                  offset: Offset(0, 5),
+                  blurRadius: 10
+                )
+              ]
             ),
-            Spacer(),
-            Container(
-              margin: EdgeInsets.only(right: 10),
-              padding: EdgeInsets.all(6),
-              child: Text(
-                'TV-MA',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600
+          ),
+          Container(
+            width: 150,
+            margin: EdgeInsets.only(left: 10),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  movie.title,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold
+                  )
                 ),
+                SizedBox(height: 30),
+                Text(
+                  '(${movie.year}) · ${movie.duration}\n${movie.tags.join()} ',
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12
+                  ),
+                )
+              ],
+            ),
+          ),
+          Spacer(),
+          Container(
+            margin: EdgeInsets.only(right: 10),
+            padding: EdgeInsets.all(6),
+            child: Text(
+              'TV-MA',
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.white,
+                fontWeight: FontWeight.w600
               ),
-              decoration: BoxDecoration(
-                color: Color(0xff474747),
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(4),
-              ),
-            )
-          ],
-        ),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.center,
-            stops: [0.5, 1.0],
-            colors: [Colors.transparent, Color(0xff26262d)]
-          )
-        ),
+            ),
+            decoration: BoxDecoration(
+              color: Color(0xff474747),
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+        ],
+      ),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.center,
+          stops: [0.5, 1.0],
+          colors: [Colors.transparent, Color(0xff26262d)]
+        )
       ),
     );
   }
 
-  Widget _buildSliverFillViewPort() {
-    return SliverFillViewport(
-      delegate: SliverChildListDelegate([
-        Container(
-          color: Color(0xff26262d),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              _buildToolBar(),
-              _buildDescription(),
-              _buildStarrings(),
-              _buildDivider(),
-              _buildYouMayLike()
-            ],
+  Widget _buildSliverToBoxAdapter() {
+    return SliverToBoxAdapter(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          _buildMoviePoster(),
+          Container(
+            color: Color(0xff26262d),
+            margin: EdgeInsets.only(bottom: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                _buildToolBar(),
+                _buildDescription(),
+                _buildStarrings(),
+                _buildDivider(),
+                _buildYouMayLike()
+              ],
+            )
           )
-        )
-      ]),
+        ],
+      )
     );
   }
+
+  // Widget _buildSliverFillViewPort() {
+  //   return SliverFillViewport(
+  //     delegate: SliverChildListDelegate([
+  //       Container(
+  //         color: Color(0xff26262d),
+  //         child: Column(
+  //           crossAxisAlignment: CrossAxisAlignment.start,
+  //           children: <Widget>[
+  //             _buildToolBar(),
+  //             _buildDescription(),
+  //             _buildStarrings(),
+  //             _buildDivider(),
+  //             _buildYouMayLike()
+  //           ],
+  //         )
+  //       )
+  //     ]),
+  //   );
+  // }
 
   Widget _buildDivider() {
     return Divider(
@@ -350,8 +373,7 @@ class _MoviePageState extends State<MoviePage> {
               controller: _controller,
               slivers: <Widget>[
                 _buildMovieBar(context),
-                _buildSliverToBoxAdapter(),
-                _buildSliverFillViewPort(),
+                _buildSliverToBoxAdapter()
               ],
             ),
           )
