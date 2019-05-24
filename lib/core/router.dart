@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../screens/charts_screen.dart';
 import '../screens/sliver_list_screen.dart';
-import '../screens/list_demo_screen.dart';
+// import '../screens/list_demo_screen.dart';
 import '../tubi_tv/tubi_navigation.dart';
 import '../screens/store_screen.dart';
 import '../douban/tab_bar_page.dart';
@@ -13,7 +13,7 @@ class Router {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(
-          builder: (_) => ListDemoScreen(),
+          builder: (_) => TabBarPage(),
           settings: settings
         );
       case '/store':
@@ -41,11 +41,11 @@ class Router {
           builder: (_) => TubiNavigation(),
           settings: settings
         );
-      case '/douban':
-        return MaterialPageRoute(
-          builder: (_) => TabBarPage(),
-          settings: settings
-        );
+      // case '/douban':
+      //   return MaterialPageRoute(
+      //     builder: (_) => TabBarPage(),
+      //     settings: settings
+      //   );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
